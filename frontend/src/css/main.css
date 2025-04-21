@@ -1,0 +1,47 @@
+body {
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    font-family: "Tinkoff Sans";
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    padding-bottom: 70px;
+}
+
+.NavBar {
+    background-color: #ffdd2d;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    height: 70px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 270px;
+}
+
+.NavBar a {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.NavBar a:active, a:hover {
+    transform: scale(0.8);
+}
