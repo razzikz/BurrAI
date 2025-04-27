@@ -1,16 +1,35 @@
-# This is a sample Python script.
+import soundfile as sf
+import numpy as np
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from pathlib import Path
+from librosa import load
+from asteroid import separate
+from asteroid.models import ConvTasNet
+from os import listdir
+from tqdm import tqdm
+
+TRAIN_PATH = Path("./data/train/train/")
+DATA_PATH = Path("./data/")
+NEW_TRAIN_PATH = Path("./data/train/")
+
+MODEL = ConvTasNet.from_pretrained("mpariente/ConvTasNet_WHAM!_sepclean")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def clean_noise():
+
+    for name in tqdm(listdir(TRAIN_PATH)):
+        y, sr = load(TRAIN_PATH / name, mono=True)
+
+        y = np.expand_dims(y, axis=0)
+
+        sources = separate.separate(
+            wav=y,
+            model=MODEL
+        )
+
+        clean = sources[0, 1]
+
+        sf.write(DATA_PATH / name, clean, sr)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+clean_noise()
