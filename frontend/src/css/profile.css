@@ -2,4 +2,20 @@
     display: flex;
     margin: 15px;
     position: 15px;
+    place-content: center;
+    margin-bottom: 30px;
+}
+
+.names {
+    margin-left: 30px;
+    place-content: center;
+}
+
+.names h1 {
+    margin: 0;
+}
+
+.level {
+    justify-content: center;
+    text-align: center;
 }
