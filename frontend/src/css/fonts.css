@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Tinkoff Sans";
+    src: url("../fonts/TinkoffSans.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Tinkoff Sans";
+    src: url("../fonts/TinkoffSans_Bold.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Tinkoff Sans";
+    src: url("../fonts/TinkoffSans_Medium.woff2") format("woff2");
+    font-display: swap;
+}
