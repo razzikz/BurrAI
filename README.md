@@ -5,13 +5,15 @@
 ```bash
 pip install -r requirements.txt
 ```
+---
 ### 2. Вставьте свой Telegram API токен:
 #### 1. Сделайте файл .env в корне проекта
 #### 2. Вставьте в файл .env свой Telegram API токен:
 ```bash
 TOKEN="YOUR_TOKEN"
 ```
-### 4. Запустите телеграм бота:
+---
+### 3. Запустите телеграм бота:
 #### Зайдите в папку telegram_bot:
 ```bash
 cd telegram_bot
@@ -25,7 +27,8 @@ python bot.py
 ```bash
 python3 bot.py
 ```
-### 5. Запустите FastAPI:
+---
+### 4. Запустите FastAPI:
 #### Зайдите в папку backend:
 ```bash
 cd ../backend
