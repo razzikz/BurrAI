@@ -25,7 +25,7 @@ async def start_message(message: types.Message):
             [
                 types.InlineKeyboardButton(
                     text="Открыть приложение📱",
-                    web_app=types.WebAppInfo(url="https://701c-185-39-207-37.ngrok-free.app")
+                    web_app=types.WebAppInfo(url="https://eaa4-185-39-207-37.ngrok-free.app")
                 )
             ]
         ]
@@ -44,9 +44,9 @@ async def start_message(message: types.Message):
         await db.execute(
             """
             INSERT OR IGNORE INTO users 
-            (user_id, username, name)
-            VALUES (?, ?, ?)
-            """, (user_id, username, name)
+            (user_id, username, name, level, xp)
+            VALUES (?, ?, ?, ?, ?)
+            """, (user_id, username, name, 1, 0)
         )
         await db.commit()
 
