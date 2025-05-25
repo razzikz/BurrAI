@@ -1,44 +1,54 @@
-import dotenv, asyncio, os, random
-from pathlib import Path
+import dotenv
+import asyncio
+import os
+import aiosqlite
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 from aiogram.enums import ParseMode
-
-project_path = Path.cwd().parent
-data_path = project_path / "data"
-data_path.mkdir(exist_ok=True)
 
 dotenv.load_dotenv()
 TOKEN = os.getenv("TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-with open(data_path / "phrases.txt", "r", encoding="utf-8") as file:
-    phrases = file.readlines()
-
 
 @dp.message(Command("start"))
 async def start_message(message: types.Message):
-    await message.answer(
-        text="<b>Привет!</b> 👋\nОтправь голосовое сообщение или файл формата .mp3 для распознавания дефектов речи!\nНапиши /profile чтобы узнать время и результат последней проверки!\nНапиши /task чтобы я дал тебе скороговорку",
-        parse_mode=ParseMode.HTML
+
+    user_id = int(message.from_user.id)
+    username = message.from_user.username
+    name = message.from_user.full_name
+
+    keyboard = types.InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                types.InlineKeyboardButton(
+                    text="Открыть приложение📱",
+                    web_app=types.WebAppInfo(url="https://701c-185-39-207-37.ngrok-free.app")
+                )
+            ]
+        ]
     )
 
-
-@dp.message(Command("profile"))
-async def profile_message(message: types.Message):
-    user_id = str(message.from_user.id)
-
-    ...
-
-
-@dp.message(Command("task"))
-async def task_message(message: types.Message):
     await message.answer(
-        text=f"<b>Произнеси эту фразу:</b> {random.choice(phrases)}",
-        parse_mode=ParseMode.HTML
+        text="<b>Привет!</b> 👋\n"
+             "Отправь голосовое сообщение или файл формата."
+             "mp3 для распознавания дефектов речи!\n"
+             "Напиши /profile чтобы узнать время и результат последней проверки!\n",
+        parse_mode=ParseMode.HTML,
+        reply_markup=keyboard
     )
+
+    async with aiosqlite.connect("../backend/database.db") as db:
+        await db.execute(
+            """
+            INSERT OR IGNORE INTO users 
+            (user_id, username, name)
+            VALUES (?, ?, ?)
+            """, (user_id, username, name)
+        )
+        await db.commit()
 
 
 async def main():

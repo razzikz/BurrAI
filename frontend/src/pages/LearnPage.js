@@ -1,10 +1,15 @@
 import React from "react";
+import DownloadBar from "../components/DownloadBar";
 
 class LearnPage extends React.Component {
+
+    use
     render()
     {
         return (
-            <a>LearnPage</a>
+            <div>
+                <DownloadBar />
+            </div>
         )
     }
 }
