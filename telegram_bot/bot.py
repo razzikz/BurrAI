@@ -91,9 +91,9 @@ async def start_message(message: types.Message):
         await db.execute(
             """
             INSERT OR IGNORE INTO users 
-            (user_id, username, name)
-            VALUES (?, ?, ?)
-            """, (user_id, username, name)
+            (user_id, username, name, level, xp)
+            VALUES (?, ?, ?, ?, ?)
+            """, (user_id, username, name, 1, 0)
         )
         await db.commit()
 

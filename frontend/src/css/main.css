@@ -47,3 +47,25 @@ body {
 .NavBar a:active, a:hover {
     transform: scale(0.8);
 }
+.qr-image {
+    width: 300px;
+    height: 300px;
+}
+
+.content-pay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.content-pay b {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.payme {
+    font-size: 24px;
+}
