@@ -1,13 +1,17 @@
 # BurrAI - Система для определения речевых дефектов
 
 ### Инструкция по установке проекта:
-### 1. Создайте файл `.env`
-### 2. Вставьте свой Telegram API токен в `.env`
+### 1. Загрузите нужные библиотеки:
+```bash
+pip install -r requirements.txt
+```
+### 2. Создайте файл `.env`
+### 3. Вставьте свой Telegram API токен в `.env`
 ```bash
 TOKEN="YOUR_TOKEN"
 ```
-### 3. Запустите телеграм бота:
-#### Зайдите в папку с телеграм ботом:
+### 4. Запустите телеграм бота:
+#### Зайдите в папку telegram_bot:
 ```bash
 cd telegram_bot
 ```
@@ -20,4 +24,12 @@ python bot.py
 ```bash
 python3 bot.py
 ```
-### 4. Запустите FastAPI:
+### 5. Запустите FastAPI:
+#### Зайдите в папку backend:
+```bash
+cd ../backend
+```
+#### Запустите FastAPI:
+```bash
+uvicorn main:app
+```
