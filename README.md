@@ -6,11 +6,11 @@
 ```bash
 TOKEN="YOUR_TOKEN"
 ```
-### 3. Зайдите в папку с телеграм ботом:
+### 3. Запустите телеграм бота:
+#### Зайдите в папку с телеграм ботом:
 ```bash
-cd telegram__bot
+cd telegram_bot
 ```
-### 4. Запустите телеграм бота:
 
 #### Для Windows
 ```bash
@@ -20,3 +20,4 @@ python bot.py
 ```bash
 python3 bot.py
 ```
+### 4. Запустите FastAPI:
