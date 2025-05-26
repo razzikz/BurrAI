@@ -5,6 +5,12 @@
 ```bash
 pip install -r requirements.txt
 ```
+### и
+```bash
+npm install
+```
+
+
 ---
 ### 2. Вставьте свой Telegram API токен:
 #### 1. Сделайте файл .env в корне проекта
